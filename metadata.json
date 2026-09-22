@@ -1,0 +1,6 @@
+{
+  "name": "Creator Studio",
+  "description": "HP Copilot Local Creator Studio - On-device AI suite for scripts, visual generation, voiceovers, and content creation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
