@@ -4,10 +4,24 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.data.db.GamingDao
+import com.example.data.model.GameHistory
+import com.example.data.model.GameTournament
+import com.example.data.model.TransactionRecord
+import com.example.data.model.UserWallet
 
-@Database(entities = [CreationItem::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        UserWallet::class,
+        TransactionRecord::class,
+        GameTournament::class,
+        GameHistory::class
+    ],
+    version = 2,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun creationDao(): CreationDao
+    abstract fun gamingDao(): GamingDao
 
     companion object {
         @Volatile
@@ -18,8 +32,10 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "creator_studio_database"
-                ).fallbackToDestructiveMigration().build()
+                    "winarena_gaming_db"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }
